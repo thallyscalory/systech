@@ -18,6 +18,55 @@ USE `systech`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `agencia`
+--
+
+DROP TABLE IF EXISTS `agencia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `agencia` (
+  `id_agencia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_banco` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `status` char(1) NOT NULL,
+  PRIMARY KEY (`id_agencia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `agencia`
+--
+
+LOCK TABLES `agencia` WRITE;
+/*!40000 ALTER TABLE `agencia` DISABLE KEYS */;
+/*!40000 ALTER TABLE `agencia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `banco`
+--
+
+DROP TABLE IF EXISTS `banco`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `banco` (
+  `id_banco` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) NOT NULL,
+  `status` char(1) NOT NULL,
+  PRIMARY KEY (`id_banco`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `banco`
+--
+
+LOCK TABLES `banco` WRITE;
+/*!40000 ALTER TABLE `banco` DISABLE KEYS */;
+/*!40000 ALTER TABLE `banco` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cargo`
 --
 
@@ -181,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-23 20:00:20
+-- Dump completed on 2018-05-23 20:23:16

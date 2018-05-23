@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
-  Height = 144
-  Width = 190
+  Height = 292
+  Width = 421
   object FD_Conexao: TFDConnection
     Params.Strings = (
       'Database=C:\Systech\Dados'

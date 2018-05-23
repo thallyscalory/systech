@@ -231,9 +231,7 @@ object F_Principal: TF_Principal
       10120C142C42483050B00821C140C122840403058B10120C142C42483050B008
       21C140C122840403058B10120CFF0F5F4C7B4DA5034CA10000000049454E44AE
       426082}
-    ExplicitLeft = 232
-    ExplicitTop = 8
-    ExplicitWidth = 297
+    ExplicitLeft = -8
   end
   object Button1: TButton
     Left = 40

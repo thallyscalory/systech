@@ -1,33 +1,74 @@
 inherited F_SubGrupo: TF_SubGrupo
   Caption = 'Systech - SubGrupo'
+  ClientWidth = 709
   OnCreate = FormCreate
+  ExplicitWidth = 725
+  ExplicitHeight = 543
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
+    inherited btn_editar: TBitBtn
+      Left = 85
+      Top = 16
+      Height = 25
+      ExplicitLeft = 85
+      ExplicitTop = 16
+      ExplicitHeight = 25
+    end
+    inherited btn_salvar: TBitBtn
+      Left = 188
+      Top = 16
+      Height = 25
+      ExplicitLeft = 188
+      ExplicitTop = 16
+      ExplicitHeight = 25
+    end
+    inherited btn_cancelar: TBitBtn
+      Left = 283
+      ExplicitLeft = 283
+    end
+    inherited btn_sair: TBitBtn
+      Left = 600
+      ExplicitLeft = 600
+    end
     inherited DBNavigator1: TDBNavigator
-      Width = 220
+      Left = 399
+      Width = 170
       DataSource = DM.DS_Subgrupo
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
       Hints.Strings = ()
-      ExplicitWidth = 220
+      ExplicitLeft = 399
+      ExplicitWidth = 170
     end
   end
   inherited Consultar: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 881
+      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
+        Left = 456
+        Top = 40
+        Height = 32
         OnClick = BitBtn1Click
+        ExplicitLeft = 456
+        ExplicitTop = 40
+        ExplicitHeight = 32
       end
       inherited Edit1: TEdit
         Top = 51
-        Height = 27
+        CharCase = ecUpperCase
         ExplicitTop = 51
-        ExplicitHeight = 27
       end
       inherited DBGrid1: TDBGrid
+        Left = 7
+        Top = 78
+        Width = 680
         DataSource = DM.DS_Subgrupo
         Columns = <
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'id_subgrupo'
             Title.Caption = 'ID SUBGRUPO'
@@ -38,7 +79,7 @@ inherited F_SubGrupo: TF_SubGrupo
             FieldName = 'nome'
             Title.Alignment = taCenter
             Title.Caption = 'NOME SUBGRUPO'
-            Width = 250
+            Width = 170
             Visible = True
           end
           item
@@ -46,10 +87,11 @@ inherited F_SubGrupo: TF_SubGrupo
             FieldName = 'nomeGrupo'
             Title.Alignment = taCenter
             Title.Caption = 'NOME GRUPO'
-            Width = 250
+            Width = 170
             Visible = True
           end
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'datacadastro'
             Title.Alignment = taCenter
@@ -58,6 +100,7 @@ inherited F_SubGrupo: TF_SubGrupo
             Visible = True
           end
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'status'
             Title.Alignment = taCenter
@@ -68,6 +111,10 @@ inherited F_SubGrupo: TF_SubGrupo
       end
     end
     inherited TabSheet2: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 881
+      ExplicitHeight = 414
       object Label2: TLabel
         Left = 32
         Top = 42
@@ -99,6 +146,66 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 13
         Caption = 'GRUPO'
       end
+      object shape_id: TShape
+        Left = 21
+        Top = 61
+        Width = 12
+        Height = 21
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 0
+        Margins.Bottom = 1
+        Pen.Color = clInactiveBorder
+        Pen.Mode = pmMask
+      end
+      object shape_data: TShape
+        Left = 21
+        Top = 103
+        Width = 12
+        Height = 21
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 0
+        Margins.Bottom = 1
+        Pen.Color = clInactiveBorder
+        Pen.Mode = pmMask
+      end
+      object shape_nome: TShape
+        Left = 21
+        Top = 144
+        Width = 12
+        Height = 21
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 0
+        Margins.Bottom = 1
+        Pen.Color = clInactiveBorder
+        Pen.Mode = pmMask
+      end
+      object shape_grupo: TShape
+        Left = 21
+        Top = 190
+        Width = 12
+        Height = 21
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 0
+        Margins.Bottom = 1
+        Pen.Color = clInactiveBorder
+        Pen.Mode = pmMask
+      end
+      object shape_status: TShape
+        Left = 21
+        Top = 224
+        Width = 12
+        Height = 51
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 0
+        Margins.Bottom = 1
+        Pen.Color = clInactiveBorder
+        Pen.Mode = pmMask
+      end
       object ed_subgrupo: TDBEdit
         Tag = 1
         Left = 32
@@ -110,18 +217,20 @@ inherited F_SubGrupo: TF_SubGrupo
         DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 0
+        OnChange = ed_subgrupoChange
       end
       object ed_datacadastro: TDBEdit
         Tag = 1
         Left = 32
         Top = 103
-        Width = 132
+        Width = 68
         Height = 21
         CharCase = ecUpperCase
         DataField = 'datacadastro'
         DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 1
+        OnChange = ed_datacadastroChange
       end
       object ed_nome: TDBEdit
         Tag = 1
@@ -134,6 +243,7 @@ inherited F_SubGrupo: TF_SubGrupo
         DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 2
+        OnChange = ed_nomeChange
       end
       object combo_grupo: TDBLookupComboBox
         Tag = 2
@@ -148,6 +258,7 @@ inherited F_SubGrupo: TF_SubGrupo
         ListField = 'nome'
         ListSource = DM.DS_Subgrupo_grupo
         TabOrder = 3
+        OnExit = combo_grupoExit
       end
       object radio_status: TDBRadioGroup
         Tag = 3
@@ -170,6 +281,7 @@ inherited F_SubGrupo: TF_SubGrupo
         Values.Strings = (
           '1'
           '0')
+        OnChange = radio_statusChange
       end
     end
   end
@@ -178,7 +290,7 @@ inherited F_SubGrupo: TF_SubGrupo
     Connection = DM.FD_Conexao
     SQL.Strings = (
       'select * from subgrupo;')
-    Left = 592
-    Top = 40
+    Left = 536
+    Top = 48
   end
 end

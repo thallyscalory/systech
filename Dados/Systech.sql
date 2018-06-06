@@ -4,7 +4,7 @@ USE `systech`;
 --
 -- Host: localhost    Database: systech
 -- ------------------------------------------------------
--- Server version	5.5.55-log
+-- Server version	5.6.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -144,6 +144,50 @@ LOCK TABLES `estado` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `funcionario`
+--
+
+DROP TABLE IF EXISTS `funcionario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `funcionario` (
+  `id_funcionario` int(11) NOT NULL,
+  `nome` varchar(60) NOT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `rg` varchar(15) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) DEFAULT NULL,
+  `endereco` varchar(45) DEFAULT NULL,
+  `numero` varchar(10) DEFAULT NULL,
+  `bairro` varchar(30) DEFAULT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
+  `cep` char(8) DEFAULT NULL,
+  `id_cidade` int(11) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `naturalidade` varchar(25) DEFAULT NULL,
+  `nome_pai` varchar(45) DEFAULT NULL,
+  `nome_mae` varchar(45) DEFAULT NULL,
+  `estado_civil` varchar(10) DEFAULT NULL,
+  `id_cargo` varchar(30) DEFAULT NULL,
+  `data_entrada` date DEFAULT NULL,
+  `data_saida` date DEFAULT NULL,
+  `statusl` char(1) DEFAULT NULL,
+  PRIMARY KEY (`id_funcionario`),
+  KEY `id_cidade_idx` (`id_cidade`),
+  CONSTRAINT `id_cidade` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `funcionario`
+--
+
+LOCK TABLES `funcionario` WRITE;
+/*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `grupo`
 --
 
@@ -230,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-23 20:23:16
+-- Dump completed on 2018-06-05 22:23:53

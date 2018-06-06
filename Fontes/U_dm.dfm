@@ -5,9 +5,9 @@ object DM: TDM
   object FD_Conexao: TFDConnection
     Params.Strings = (
       'Database=systech'
-      'User_Name=kenernot'
-      'Password=Luk@s1234567890'
-      'Server=172.16.10.2'
+      'User_Name=root'
+      'Password=root'
+      'Server=127.0.0.1'
       'DriverID=MySQL')
     Connected = True
     LoginPrompt = False

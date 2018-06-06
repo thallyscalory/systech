@@ -13,16 +13,7 @@ uses
 type
   TDM = class(TDataModule)
     FD_Conexao: TFDConnection;
-    FDQ_Subgrupo: TFDQuery;
-    FDQ_Subgrupo_grupo: TFDQuery;
-    DS_Subgrupo_grupo: TDataSource;
-    DS_Subgrupo: TDataSource;
-    FDQ_Subgrupoid_subgrupo: TFDAutoIncField;
-    FDQ_Subgrupoid_grupo: TIntegerField;
-    FDQ_Subgrupodatacadastro: TDateField;
-    FDQ_Subgruponome: TStringField;
-    FDQ_Subgrupostatus: TStringField;
-    FDQ_SubgruponomeGrupo: TStringField;
+    FDQ_Cidade: TFDQuery;
   private
     { Private declarations }
   public

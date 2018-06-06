@@ -6,23 +6,14 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Buttons;
+  Vcl.StdCtrls;
 
 type
   TF_Principal = class(TForm)
     FundoPrincipal: TImage;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
 
-    Label1: TLabel;
-    BTN_Cliente: TBitBtn;
-    BTN_Fornecedor: TBitBtn;
-    BTN_Colaborador: TBitBtn;
-    Label2: TLabel;
-    BTN_CReceber: TBitBtn;
-    BTN_CPagar: TBitBtn;
-    BTN_Caixa: TBitBtn;
-    BTN_Compras: TBitBtn;
-    BTN_Vendas: TBitBtn;
-    Label3: TLabel;
   private
     { Private declarations }
   public
@@ -36,5 +27,11 @@ implementation
 
 {$R *.dfm}
 
+uses U_modelo, U_Cidade;
+
+procedure TF_Principal.Button1Click(Sender: TObject);
+begin
+  F_Cidade.ShowModal;
+end;
 
 end.

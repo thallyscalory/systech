@@ -13,7 +13,18 @@ uses
 type
   TDM = class(TDataModule)
     FD_Conexao: TFDConnection;
-    FDQ_Cidade: TFDQuery;
+    FDQ_RC: TFDQuery;
+    FDQ_Max: TFDQuery;
+    FDQ_MaxMAXid_referencia: TIntegerField;
+    FDQ_ReferenciaComercial: TFDQuery;
+    FDQ_ReferenciaComercialid_referencia: TFDAutoIncField;
+    FDQ_ReferenciaComercialempresaref: TStringField;
+    FDQ_ReferenciaComercialtelefone: TStringField;
+    FDQ_ReferenciaComercialstatus: TStringField;
+    FDQ_RCid_referencia: TFDAutoIncField;
+    FDQ_RCempresaref: TStringField;
+    FDQ_RCtelefone: TStringField;
+    FDQ_RCstatus: TStringField;
   private
     { Private declarations }
   public

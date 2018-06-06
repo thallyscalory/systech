@@ -21,6 +21,13 @@ type
     BTN_Compras: TBitBtn;
     BTN_Vendas: TBitBtn;
     Label3: TLabel;
+    BTN_EEstoque: TBitBtn;
+    BTN_SEstoque: TBitBtn;
+    Label4: TLabel;
+    BTN_RVendas: TBitBtn;
+    BTN_RFinanceiro: TBitBtn;
+    BTN_RCadastro: TBitBtn;
+    BTN_REstoque: TBitBtn;
   private
     { Private declarations }
   public

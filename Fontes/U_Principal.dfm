@@ -240,7 +240,7 @@ object F_Principal: TF_Principal
   object Label1: TLabel
     Left = 0
     Top = 81
-    Width = 158
+    Width = 139
     Height = 38
     Align = alCustom
     Caption = ' Cadastro'
@@ -501,7 +501,7 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 7
   end
   object BTN_Colaborador: TBitBtn
     Left = 319
@@ -614,7 +614,7 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
   end
   object BTN_CReceber: TBitBtn
     Left = 8
@@ -727,7 +727,7 @@ object F_Principal: TF_Principal
       9861D2A37FDAB3A9E6CDEEFAF5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
   end
   object BTN_CPagar: TBitBtn
     Left = 8
@@ -840,7 +840,7 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFECF6F66970EA5B50F5635EF2635EF263
       5EF2635DF2635EF2635DF25D54F35B60ECEAF1F8FFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
   end
   object BTN_Caixa: TBitBtn
     Left = 279
@@ -953,7 +953,7 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 4
   end
   object BTN_Compras: TBitBtn
     Left = 473
@@ -1063,7 +1063,7 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
   end
   object BTN_Vendas: TBitBtn
     Left = 279
@@ -1176,15 +1176,6 @@ object F_Principal: TF_Principal
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentFont = False
-    TabOrder = 7
-  end
-  object Button2: TButton
-    Left = 152
-    Top = 119
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
-    TabOrder = 1
-    OnClick = Button2Click
+    TabOrder = 6
   end
 end

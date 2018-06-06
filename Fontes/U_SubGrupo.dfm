@@ -3,7 +3,6 @@ inherited F_SubGrupo: TF_SubGrupo
   ClientWidth = 709
   OnCreate = FormCreate
   ExplicitWidth = 725
-  ExplicitHeight = 543
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -43,10 +42,6 @@ inherited F_SubGrupo: TF_SubGrupo
   end
   inherited Consultar: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
         Left = 456
         Top = 40
@@ -286,7 +281,6 @@ inherited F_SubGrupo: TF_SubGrupo
     end
   end
   object FDQ_Subgrupo_suporte: TFDQuery
-    Active = True
     Connection = DM.FD_Conexao
     SQL.Strings = (
       'select * from subgrupo;')

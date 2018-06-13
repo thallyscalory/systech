@@ -20,7 +20,7 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     Label1: TLabel;
-    Edit1: TEdit;
+    EdtPesquisar: TEdit;
     BitBtn1: TBitBtn;
     DBGrid1: TDBGrid;
     procedure btn_novoClick(Sender: TObject);

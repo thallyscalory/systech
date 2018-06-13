@@ -41,10 +41,6 @@ inherited F_SubGrupo: TF_SubGrupo
   end
   inherited Consultar: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
         Left = 456
         Top = 40
@@ -53,11 +49,6 @@ inherited F_SubGrupo: TF_SubGrupo
         ExplicitLeft = 456
         ExplicitTop = 40
         ExplicitHeight = 32
-      end
-      inherited Edit1: TEdit
-        Top = 51
-        CharCase = ecUpperCase
-        ExplicitTop = 51
       end
       inherited DBGrid1: TDBGrid
         Left = 3
@@ -108,10 +99,6 @@ inherited F_SubGrupo: TF_SubGrupo
       end
     end
     inherited TabSheet2: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       object Label2: TLabel
         Left = 32
         Top = 42

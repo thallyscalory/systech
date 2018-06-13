@@ -222,7 +222,7 @@ object F_modelo: TF_modelo
         ParentFont = False
         TabOrder = 0
       end
-      object Edit1: TEdit
+      object EdtPesquisar: TEdit
         Left = 7
         Top = 57
         Width = 443

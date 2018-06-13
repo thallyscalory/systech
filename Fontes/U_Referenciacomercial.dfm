@@ -11,16 +11,8 @@ inherited F_Referenciacomercial: TF_Referenciacomercial
   inherited Consultar: TPageControl
     ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
         OnClick = BitBtn1Click
-      end
-      inherited Edit1: TEdit
-        CharCase = ecUpperCase
-        OnExit = Edit1Exit
       end
       inherited DBGrid1: TDBGrid
         DataSource = DS
@@ -80,8 +72,6 @@ inherited F_Referenciacomercial: TF_Referenciacomercial
     inherited TabSheet2: TTabSheet
       ExplicitLeft = 124
       ExplicitTop = 48
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       object Label2: TLabel
         Left = 12
         Top = 16

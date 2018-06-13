@@ -71,7 +71,7 @@ begin
     'from subgrupo s ' + //
     'inner join grupo g ' + //
     'on g.id_grupo = s.id_grupo ' + //
-    'where s.nome like ' + QuotedStr('%' + Edit1.Text + '%') + ';'; //
+    'where s.nome like ' + QuotedStr('%' + EdtPesquisar.Text + '%') + ';'; //
   //showmessage(SQL);
   DM.FDQ_Subgrupo.Open(SQL);
 

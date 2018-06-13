@@ -54,7 +54,7 @@ procedure TF_Referenciacomercial.BitBtn1Click(Sender: TObject);
 begin
   inherited;
   DM.FDQ_RC.Close;
-  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := Edit1.Text + '%';
+  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := EdtPesquisar.Text + '%';
   DM.FDQ_RC.Open();
 end;
 
@@ -176,7 +176,7 @@ procedure TF_Referenciacomercial.Edit1Exit(Sender: TObject);
 begin
   inherited;
   DM.FDQ_RC.Close;
-  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := Edit1.Text + '%';
+  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := EdtPesquisar.Text + '%';
   DM.FDQ_RC.Open();
 end;
 

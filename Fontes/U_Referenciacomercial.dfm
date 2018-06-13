@@ -78,8 +78,8 @@ inherited F_Referenciacomercial: TF_Referenciacomercial
       end
     end
     inherited TabSheet2: TTabSheet
-      ExplicitLeft = 124
-      ExplicitTop = 48
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 881
       ExplicitHeight = 414
       object Label2: TLabel

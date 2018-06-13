@@ -86,6 +86,9 @@ begin
   DM.FDQ_MaxRefCom.Open();
   max := DM.FDQ_MaxRefComMAXid_referencia.AsInteger + 1;
   Edt_ID.Text := IntToStr(max);
+  DM.FDQ_ReferenciaComercial.Close;
+  DM.FDQ_ReferenciaComercial.Open();
+  RG_Status.ItemIndex := 0;
 end;
 
 procedure TF_Referenciacomercial.btn_salvarClick(Sender: TObject);

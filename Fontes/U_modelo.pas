@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.ComCtrls;
+  Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
-  TModelo = class(TForm)
+  TF_modelo = class(TForm)
     Panel1: TPanel;
     btn_novo: TBitBtn;
     btn_editar: TBitBtn;
@@ -16,7 +16,13 @@ type
     btn_cancelar: TBitBtn;
     btn_sair: TBitBtn;
     DBNavigator1: TDBNavigator;
-    PageControl1: TPageControl;
+    Consultar: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Label1: TLabel;
+    Edit1: TEdit;
+    BitBtn1: TBitBtn;
+    DBGrid1: TDBGrid;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_sairClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
@@ -29,13 +35,13 @@ type
   end;
 
 var
-  Modelo: TModelo;
+  F_modelo: TF_modelo;
 
 implementation
 
 {$R *.dfm}
 
-procedure TModelo.btn_cancelarClick(Sender: TObject);
+procedure TF_modelo.btn_cancelarClick(Sender: TObject);
 begin
  btn_novo.Enabled := True;
   btn_editar.Enabled := False;
@@ -45,7 +51,7 @@ begin
   TabSheet1.Show;
 end;
 
-procedure TModelo.btn_editarClick(Sender: TObject);
+procedure TF_modelo.btn_editarClick(Sender: TObject);
 begin
 btn_novo.Enabled := False;
   btn_editar.Enabled := False;
@@ -54,7 +60,7 @@ btn_novo.Enabled := False;
   btn_sair.Enabled := False;
 end;
 
-procedure TModelo.btn_novoClick(Sender: TObject);
+procedure TF_modelo.btn_novoClick(Sender: TObject);
 begin
 btn_novo.Enabled := False;
   btn_editar.Enabled := False;
@@ -64,12 +70,12 @@ btn_novo.Enabled := False;
   TabSheet2.Show;
 end;
 
-procedure TModelo.btn_sairClick(Sender: TObject);
+procedure TF_modelo.btn_sairClick(Sender: TObject);
 begin
 close;
 end;
 
-procedure TModelo.btn_salvarClick(Sender: TObject);
+procedure TF_modelo.btn_salvarClick(Sender: TObject);
 begin
 btn_novo.Enabled := True;
   btn_editar.Enabled := False;

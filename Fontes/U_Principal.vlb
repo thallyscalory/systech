@@ -1,7 +1,4 @@
-﻿[btn_cliente]
-Coordinates=77,10,77,58
-
-[btn_contasapagar]
+﻿[btn_contasapagar]
 Coordinates=96,78,117,58
 
 [btn_Venda]
@@ -13,9 +10,6 @@ Coordinates=244,10,67,58
 [Panel1]
 Coordinates=10,146,55,58
 
-[btn_caixa]
-Coordinates=164,10,70,58
-
 [btn_Produtos]
 Coordinates=321,10,91,58
 
@@ -23,5 +17,5 @@ Coordinates=321,10,91,58
 Coordinates=223,78,121,58
 
 []
-Coordinates=382,87,91,36
+Coordinates=77,10,77,58
 

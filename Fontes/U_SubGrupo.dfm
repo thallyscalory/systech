@@ -33,7 +33,6 @@ inherited F_SubGrupo: TF_SubGrupo
     inherited DBNavigator1: TDBNavigator
       Left = 399
       Width = 170
-      DataSource = DM.DS_Subgrupo
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
       Hints.Strings = ()
       ExplicitLeft = 399
@@ -42,6 +41,10 @@ inherited F_SubGrupo: TF_SubGrupo
   end
   inherited Consultar: TPageControl
     inherited TabSheet1: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 881
+      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
         Left = 456
         Top = 40
@@ -57,10 +60,9 @@ inherited F_SubGrupo: TF_SubGrupo
         ExplicitTop = 51
       end
       inherited DBGrid1: TDBGrid
-        Left = 7
+        Left = 3
         Top = 78
         Width = 680
-        DataSource = DM.DS_Subgrupo
         Columns = <
           item
             Alignment = taCenter
@@ -209,7 +211,6 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 21
         CharCase = ecUpperCase
         DataField = 'id_subgrupo'
-        DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 0
         OnChange = ed_subgrupoChange
@@ -222,7 +223,6 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 21
         CharCase = ecUpperCase
         DataField = 'datacadastro'
-        DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 1
         OnChange = ed_datacadastroChange
@@ -235,7 +235,6 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 21
         CharCase = ecUpperCase
         DataField = 'nome'
-        DataSource = DM.DS_Subgrupo
         Enabled = False
         TabOrder = 2
         OnChange = ed_nomeChange
@@ -247,11 +246,9 @@ inherited F_SubGrupo: TF_SubGrupo
         Width = 157
         Height = 21
         DataField = 'id_grupo'
-        DataSource = DM.DS_Subgrupo
         Enabled = False
         KeyField = 'id_grupo'
         ListField = 'nome'
-        ListSource = DM.DS_Subgrupo_grupo
         TabOrder = 3
         OnExit = combo_grupoExit
       end
@@ -265,7 +262,6 @@ inherited F_SubGrupo: TF_SubGrupo
         Color = clWhite
         Columns = 2
         DataField = 'status'
-        DataSource = DM.DS_Subgrupo
         Enabled = False
         Items.Strings = (
           'ATIVO'
@@ -284,7 +280,7 @@ inherited F_SubGrupo: TF_SubGrupo
     Connection = DM.FD_Conexao
     SQL.Strings = (
       'select * from subgrupo;')
-    Left = 536
-    Top = 48
+    Left = 112
+    Top = 272
   end
 end

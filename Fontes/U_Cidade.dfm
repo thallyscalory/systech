@@ -135,7 +135,7 @@ inherited F_Cidade: TF_Cidade
   end
   object Button1: TButton
     Left = 320
-    Top = 216
+    Top = 226
     Width = 75
     Height = 25
     Caption = 'Button1'

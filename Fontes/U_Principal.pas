@@ -51,6 +51,7 @@ type
     procedure ReFerenciaComercial1Click(Sender: TObject);
     procedure Cidade1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
+    procedure Cliente1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,26 +65,31 @@ implementation
 
 {$R *.dfm}
 
-uses U_modelo, U_Cidade, U_dm, U_Referenciacomercial, U_SubGrupo;
+uses U_modelo, U_Cidade, U_dm, U_Referenciacomercial, U_SubGrupo, U_Cliente;
 
 procedure TF_Principal.Cidade1Click(Sender: TObject);
 begin
-F_Cidade.ShowModal;
+  F_Cidade.ShowModal;
+end;
+
+procedure TF_Principal.Cliente1Click(Sender: TObject);
+begin
+  F_Cliente.ShowModal;
 end;
 
 procedure TF_Principal.ReFerenciaComercial1Click(Sender: TObject);
 begin
-F_Referenciacomercial.ShowModal;
+  F_Referenciacomercial.ShowModal;
 end;
 
 procedure TF_Principal.Sair1Click(Sender: TObject);
 begin
-Close;
+  Close;
 end;
 
 procedure TF_Principal.SubGrupo1Click(Sender: TObject);
 begin
-F_SubGrupo.ShowModal;
+  F_SubGrupo.ShowModal;
 end;
 
 end.

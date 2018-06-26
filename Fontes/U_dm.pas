@@ -13,18 +13,9 @@ uses
 type
   TDM = class(TDataModule)
     FD_Conexao: TFDConnection;
-    FDQ_RC: TFDQuery;
     FDQ_MaxRefCom: TFDQuery;
     FDQ_MaxRefComMAXid_referencia: TIntegerField;
     FDQ_ReferenciaComercial: TFDQuery;
-    FDQ_ReferenciaComercialid_referencia: TFDAutoIncField;
-    FDQ_ReferenciaComercialempresaref: TStringField;
-    FDQ_ReferenciaComercialtelefone: TStringField;
-    FDQ_ReferenciaComercialstatus: TStringField;
-    FDQ_RCid_referencia: TFDAutoIncField;
-    FDQ_RCempresaref: TStringField;
-    FDQ_RCtelefone: TStringField;
-    FDQ_RCstatus: TStringField;
     FDQ_Cidade: TFDQuery;
     DS_Subgrupo: TDataSource;
     FDQ_Subgrupo: TFDQuery;
@@ -36,6 +27,15 @@ type
     FDQ_SubgruponomeGrupo: TStringField;
     FDQ_Subgrupo_grupo: TFDQuery;
     DS_Subgrupo_grupo: TDataSource;
+    FDQ_ReferenciaComercialid_referencia: TFDAutoIncField;
+    FDQ_ReferenciaComercialempresaref: TStringField;
+    FDQ_ReferenciaComercialtelefone: TStringField;
+    FDQ_ReferenciaComercialstatus: TStringField;
+    FDQ_RC: TFDQuery;
+    FDQ_RCid_referencia: TFDAutoIncField;
+    FDQ_RCempresaref: TStringField;
+    FDQ_RCtelefone: TStringField;
+    FDQ_RCstatus: TStringField;
   private
     { Private declarations }
   public

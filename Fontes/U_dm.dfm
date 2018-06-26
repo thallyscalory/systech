@@ -9,46 +9,10 @@ object DM: TDM
       'Password=enju'
       'Server=127.0.0.1'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 24
     Top = 16
-  end
-  object FDQ_RC: TFDQuery
-    Connection = FD_Conexao
-    SQL.Strings = (
-      'select * from referenciacomercial '
-      'where empresaref like :RefEmpresa order by id_referencia;')
-    Left = 28
-    Top = 87
-    ParamData = <
-      item
-        Name = 'REFEMPRESA'
-        ParamType = ptInput
-      end>
-    object FDQ_RCid_referencia: TFDAutoIncField
-      FieldName = 'id_referencia'
-      Origin = 'id_referencia'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQ_RCempresaref: TStringField
-      FieldName = 'empresaref'
-      Origin = 'empresaref'
-      Required = True
-    end
-    object FDQ_RCtelefone: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'telefone'
-      Origin = 'telefone'
-      Size = 14
-    end
-    object FDQ_RCstatus: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'status'
-      Origin = 'status'
-      FixedChar = True
-      Size = 1
-    end
   end
   object FDQ_MaxRefCom: TFDQuery
     Connection = FD_Conexao
@@ -169,5 +133,47 @@ object DM: TDM
     DataSet = FDQ_Subgrupo_grupo
     Left = 248
     Top = 184
+  end
+  object FDQ_RC: TFDQuery
+    Connection = FD_Conexao
+    SQL.Strings = (
+      'select '
+      '  * '
+      'from referenciacomercial '
+      'where empresaref like (:RefEmpresa) '
+      'order by id_referencia'
+      'limit 15;')
+    Left = 28
+    Top = 87
+    ParamData = <
+      item
+        Name = 'REFEMPRESA'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%'
+      end>
+    object FDQ_RCid_referencia: TFDAutoIncField
+      FieldName = 'id_referencia'
+      Origin = 'id_referencia'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDQ_RCempresaref: TStringField
+      FieldName = 'empresaref'
+      Origin = 'empresaref'
+      Required = True
+    end
+    object FDQ_RCtelefone: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'telefone'
+      Origin = 'telefone'
+      Size = 14
+    end
+    object FDQ_RCstatus: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'status'
+      Origin = 'status'
+      FixedChar = True
+      Size = 1
+    end
   end
 end

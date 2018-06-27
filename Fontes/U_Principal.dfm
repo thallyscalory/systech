@@ -2425,6 +2425,7 @@ object F_Principal: TF_Principal
       end
       object Grupo1: TMenuItem
         Caption = 'Grupo'
+        OnClick = Grupo1Click
       end
       object SubGrupo1: TMenuItem
         Caption = 'SubGrupo'
@@ -2455,12 +2456,14 @@ object F_Principal: TF_Principal
       end
       object Estado1: TMenuItem
         Caption = 'Estado'
+        OnClick = Estado1Click
       end
       object N1: TMenuItem
         Caption = '-'
       end
       object Cargo1: TMenuItem
         Caption = 'Cargo'
+        OnClick = Cargo1Click
       end
     end
     object EntradaeSaidas1: TMenuItem

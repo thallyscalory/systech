@@ -1,5 +1,5 @@
-inherited F_SubGrupo: TF_SubGrupo
-  Caption = 'Systech - SubGrupo'
+inherited F_Grupo: TF_Grupo
+  Caption = 'Systech - Grupo'
   ClientWidth = 709
   OnCreate = FormCreate
   ExplicitWidth = 725
@@ -40,12 +40,7 @@ inherited F_SubGrupo: TF_SubGrupo
     end
   end
   inherited Consultar: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       inherited BitBtn1: TBitBtn
         Left = 456
         Top = 40
@@ -56,66 +51,47 @@ inherited F_SubGrupo: TF_SubGrupo
         ExplicitHeight = 32
       end
       inherited DBGrid1: TDBGrid
-        Left = 3
-        Top = 78
-        Width = 680
-        DataSource = DM.DS_SubGrupo
+        DataSource = DM.DS_Grupo
         Columns = <
           item
-            Alignment = taCenter
             Expanded = False
-            FieldName = 'id_subgrupo'
-            Title.Caption = 'ID SUBGRUPO'
+            FieldName = 'id_grupo'
+            Title.Caption = 'ID GRUPO'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'nome'
             Title.Alignment = taCenter
-            Title.Caption = 'NOME SUBGRUPO'
-            Width = 170
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'nomeGrupo'
-            Title.Alignment = taCenter
             Title.Caption = 'NOME GRUPO'
-            Width = 170
             Visible = True
           end
           item
-            Alignment = taCenter
             Expanded = False
-            FieldName = 'datacadastro'
+            FieldName = 'data_cadastro'
             Title.Alignment = taCenter
             Title.Caption = 'DATA CADASTRO'
-            Width = 120
+            Width = 110
             Visible = True
           end
           item
-            Alignment = taCenter
             Expanded = False
             FieldName = 'status'
             Title.Alignment = taCenter
             Title.Caption = 'STATUS'
-            Width = 100
+            Width = 60
             Visible = True
           end>
       end
     end
     inherited TabSheet2: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 881
-      ExplicitHeight = 414
       object Label2: TLabel
         Left = 32
         Top = 42
-        Width = 68
+        Width = 49
         Height = 13
-        Caption = 'ID SUBGRUPO'
-        FocusControl = ed_subgrupo
+        Caption = 'ID GRUPO'
+        FocusControl = ed_grupo
       end
       object Label4: TLabel
         Left = 32
@@ -132,13 +108,6 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 13
         Caption = 'NOME'
         FocusControl = ed_nome
-      end
-      object Label7: TLabel
-        Left = 32
-        Top = 171
-        Width = 35
-        Height = 13
-        Caption = 'GRUPO'
       end
       object shape_id: TShape
         Left = 21
@@ -176,21 +145,9 @@ inherited F_SubGrupo: TF_SubGrupo
         Pen.Color = clInactiveBorder
         Pen.Mode = pmMask
       end
-      object shape_grupo: TShape
-        Left = 21
-        Top = 190
-        Width = 12
-        Height = 21
-        Margins.Left = 1
-        Margins.Top = 1
-        Margins.Right = 0
-        Margins.Bottom = 1
-        Pen.Color = clInactiveBorder
-        Pen.Mode = pmMask
-      end
       object shape_status: TShape
         Left = 21
-        Top = 224
+        Top = 178
         Width = 12
         Height = 51
         Margins.Left = 1
@@ -200,18 +157,18 @@ inherited F_SubGrupo: TF_SubGrupo
         Pen.Color = clInactiveBorder
         Pen.Mode = pmMask
       end
-      object ed_subgrupo: TDBEdit
+      object ed_grupo: TDBEdit
         Tag = 1
         Left = 32
         Top = 61
         Width = 68
         Height = 21
         CharCase = ecUpperCase
-        DataField = 'id_subgrupo'
-        DataSource = DM.DS_SubGrupo
+        DataField = 'id_grupo'
+        DataSource = DM.DS_Grupo
         Enabled = False
         TabOrder = 0
-        OnChange = ed_subgrupoChange
+        OnChange = ed_grupoChange
       end
       object ed_datacadastro: TDBEdit
         Tag = 1
@@ -220,8 +177,8 @@ inherited F_SubGrupo: TF_SubGrupo
         Width = 68
         Height = 21
         CharCase = ecUpperCase
-        DataField = 'datacadastro'
-        DataSource = DM.DS_SubGrupo
+        DataField = 'data_cadastro'
+        DataSource = DM.DS_Grupo
         Enabled = False
         TabOrder = 1
         OnChange = ed_datacadastroChange
@@ -234,44 +191,29 @@ inherited F_SubGrupo: TF_SubGrupo
         Height = 21
         CharCase = ecUpperCase
         DataField = 'nome'
-        DataSource = DM.DS_SubGrupo
+        DataSource = DM.DS_Grupo
         Enabled = False
         TabOrder = 2
         OnChange = ed_nomeChange
       end
-      object combo_grupo: TDBLookupComboBox
-        Tag = 2
-        Left = 32
-        Top = 190
-        Width = 157
-        Height = 21
-        DataField = 'id_grupo'
-        DataSource = DM.DS_SubGrupo
-        Enabled = False
-        KeyField = 'id_grupo'
-        ListField = 'nome'
-        ListSource = DM.DS_Grupo
-        TabOrder = 3
-        OnExit = combo_grupoExit
-      end
       object radio_status: TDBRadioGroup
         Tag = 3
         Left = 32
-        Top = 217
+        Top = 171
         Width = 185
         Height = 62
         Caption = 'STATUS'
         Color = clWhite
         Columns = 2
         DataField = 'status'
-        DataSource = DM.DS_SubGrupo
+        DataSource = DM.DS_Grupo
         Enabled = False
         Items.Strings = (
           'ATIVO'
           'INATIVO')
         ParentBackground = False
         ParentColor = False
-        TabOrder = 4
+        TabOrder = 3
         Values.Strings = (
           '1'
           '0')
@@ -279,12 +221,11 @@ inherited F_SubGrupo: TF_SubGrupo
       end
     end
   end
-  object FDQ_SubGrupo_Suporte: TFDQuery
-    CachedUpdates = True
+  object FDQ_Grupo_suporte: TFDQuery
     Connection = DM.FD_Conexao
     SQL.Strings = (
-      'select * from subgrupo;')
-    Left = 432
-    Top = 312
+      'select * from grupo;')
+    Left = 376
+    Top = 280
   end
 end

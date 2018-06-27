@@ -6,7 +6,7 @@ object DM: TDM
     Params.Strings = (
       'Database=Systech'
       'User_Name=root'
-      'Password=enju'
+      'Password=root'
       'Server=127.0.0.1'
       'DriverID=MySQL')
     LoginPrompt = False
@@ -103,73 +103,6 @@ object DM: TDM
     Left = 128
     Top = 32
   end
-  object DS_Subgrupo: TDataSource
-    DataSet = FDQ_Subgrupo
-    Left = 356
-    Top = 176
-  end
-  object FDQ_Subgrupo: TFDQuery
-    Connection = FD_Conexao
-    SQL.Strings = (
-      
-        'select s.id_subgrupo, s.id_grupo, s.datacadastro, s.nome, s.stat' +
-        'us, g.nome as '#39'nomeGrupo'#39
-      '      from subgrupo s'
-      '      inner join grupo g'
-      '            on g.id_grupo = s.id_grupo'
-      ';')
-    Left = 356
-    Top = 232
-    object FDQ_Subgrupoid_subgrupo: TFDAutoIncField
-      FieldName = 'id_subgrupo'
-      Origin = 'id_subgrupo'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQ_Subgrupoid_grupo: TIntegerField
-      FieldName = 'id_grupo'
-      Origin = 'id_grupo'
-      Required = True
-    end
-    object FDQ_Subgrupodatacadastro: TDateField
-      FieldName = 'datacadastro'
-      Origin = 'datacadastro'
-      Required = True
-    end
-    object FDQ_Subgruponome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Required = True
-      Size = 30
-    end
-    object FDQ_Subgrupostatus: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'status'
-      Origin = 'status'
-      FixedChar = True
-      Size = 1
-    end
-    object FDQ_SubgruponomeGrupo: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nomeGrupo'
-      Origin = 'nome'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 30
-    end
-  end
-  object FDQ_Subgrupo_grupo: TFDQuery
-    Connection = FD_Conexao
-    SQL.Strings = (
-      'select id_grupo, nome from grupo;')
-    Left = 248
-    Top = 232
-  end
-  object DS_Subgrupo_grupo: TDataSource
-    DataSet = FDQ_Subgrupo_grupo
-    Left = 248
-    Top = 184
-  end
   object FDQ_Estado: TFDQuery
     Connection = FD_Conexao
     SQL.Strings = (
@@ -207,5 +140,59 @@ object DM: TDM
     DataSet = FDQ_Estado
     Left = 296
     Top = 24
+  end
+  object FDQ_Subgrupo: TFDQuery
+    Connection = FD_Conexao
+    SQL.Strings = (
+      
+        'select s.id_subgrupo, s.id_grupo, s.datacadastro, s.nome, s.stat' +
+        'us, g.nome as '#39'nomeGrupo'#39
+      '      from subgrupo s'
+      '      inner join grupo g'
+      '            on g.id_grupo = s.id_grupo'
+      ';')
+    Left = 440
+    Top = 240
+  end
+  object DS_Grupo: TDataSource
+    DataSet = FDQ_Grupo
+    Left = 304
+    Top = 184
+  end
+  object DS_SubGrupo: TDataSource
+    DataSet = FDQ_Subgrupo
+    Left = 432
+    Top = 184
+  end
+  object FDQ_Grupo: TFDQuery
+    Connection = FD_Conexao
+    SQL.Strings = (
+      'select * from grupo;')
+    Left = 304
+    Top = 240
+    object FDQ_Grupoid_grupo: TFDAutoIncField
+      FieldName = 'id_grupo'
+      Origin = 'id_grupo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQ_Grupodata_cadastro: TDateField
+      FieldName = 'data_cadastro'
+      Origin = 'data_cadastro'
+      Required = True
+    end
+    object FDQ_Gruponome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 30
+    end
+    object FDQ_Grupostatus: TStringField
+      FieldName = 'status'
+      Origin = 'status'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
   end
 end

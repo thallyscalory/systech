@@ -26,22 +26,20 @@ type
     FDQ_RCtelefone: TStringField;
     FDQ_RCstatus: TStringField;
     FDQ_Cidade: TFDQuery;
-    DS_Subgrupo: TDataSource;
-    FDQ_Subgrupo: TFDQuery;
-    FDQ_Subgrupoid_subgrupo: TFDAutoIncField;
-    FDQ_Subgrupoid_grupo: TIntegerField;
-    FDQ_Subgrupodatacadastro: TDateField;
-    FDQ_Subgruponome: TStringField;
-    FDQ_Subgrupostatus: TStringField;
-    FDQ_SubgruponomeGrupo: TStringField;
-    FDQ_Subgrupo_grupo: TFDQuery;
-    DS_Subgrupo_grupo: TDataSource;
     FDQ_Estado: TFDQuery;
     FDQ_Estadoid_estado: TFDAutoIncField;
     FDQ_Estadonome: TStringField;
     FDQ_EstadoUF: TStringField;
     FDQ_Estadostatus: TStringField;
     DS_Estado: TDataSource;
+    FDQ_Subgrupo: TFDQuery;
+    DS_Grupo: TDataSource;
+    DS_SubGrupo: TDataSource;
+    FDQ_Grupo: TFDQuery;
+    FDQ_Grupoid_grupo: TFDAutoIncField;
+    FDQ_Grupodata_cadastro: TDateField;
+    FDQ_Gruponome: TStringField;
+    FDQ_Grupostatus: TStringField;
   private
     { Private declarations }
   public

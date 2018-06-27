@@ -6,10 +6,11 @@ uses
   U_dm in 'U_dm.pas' {DM: TDataModule},
   U_Cidade in 'U_Cidade.pas' {F_Cidade},
   U_Referenciacomercial in 'U_Referenciacomercial.pas' {F_Referenciacomercial},
-  U_SubGrupo in 'U_SubGrupo.pas' {F_SubGrupo},
   U_Cargo in 'U_Cargo.pas' {F_Cargo},
   U_Estado in 'U_Estado.pas' {F_Estado},
-  U_modelo in 'U_modelo.pas' {F_modelo};
+  U_modelo in 'U_modelo.pas' {F_modelo},
+  U_Grupo in 'U_Grupo.pas' {F_Grupo},
+  U_SubGrupo in 'U_SubGrupo.pas' {F_SubGrupo};
 
 {$R *.res}
 
@@ -21,10 +22,11 @@ begin
   Application.CreateForm(TF_modelo, F_modelo);
   Application.CreateForm(TF_Cidade, F_Cidade);
   Application.CreateForm(TF_Referenciacomercial, F_Referenciacomercial);
-  Application.CreateForm(TF_SubGrupo, F_SubGrupo);
   Application.CreateForm(TF_Cargo, F_Cargo);
   Application.CreateForm(TF_Estado, F_Estado);
   Application.CreateForm(TF_modelo, F_modelo);
+  Application.CreateForm(TF_Grupo, F_Grupo);
+  Application.CreateForm(TF_SubGrupo, F_SubGrupo);
   Application.Run;
 
 end.

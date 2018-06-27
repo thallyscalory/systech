@@ -1,4 +1,4 @@
-unit U_SubGrupo;
+unit U_Grupo;
 
 interface
 
@@ -13,32 +13,28 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TF_SubGrupo = class(TF_modelo)
+  TF_Grupo = class(TF_modelo)
     Label2: TLabel;
-    ed_subgrupo: TDBEdit;
+    ed_grupo: TDBEdit;
     Label4: TLabel;
     ed_datacadastro: TDBEdit;
     Label5: TLabel;
     ed_nome: TDBEdit;
-    Label7: TLabel;
-    combo_grupo: TDBLookupComboBox;
     radio_status: TDBRadioGroup;
     shape_id: TShape;
     shape_data: TShape;
     shape_nome: TShape;
-    shape_grupo: TShape;
     shape_status: TShape;
-    FDQ_SubGrupo_Suporte: TFDQuery;
+    FDQ_Grupo_suporte: TFDQuery;
     procedure btn_cancelarClick(Sender: TObject);
     procedure btn_editarClick(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure ed_subgrupoChange(Sender: TObject);
+    procedure ed_grupoChange(Sender: TObject);
     procedure ed_datacadastroChange(Sender: TObject);
     procedure ed_nomeChange(Sender: TObject);
-    procedure combo_grupoExit(Sender: TObject);
     procedure radio_statusChange(Sender: TObject);
   private
     { Private declarations }
@@ -52,7 +48,7 @@ type
   end;
 
 var
-  F_SubGrupo: TF_SubGrupo;
+  F_Grupo: TF_Grupo;
 
 implementation
 
@@ -60,69 +56,58 @@ implementation
 
 uses U_dm;
 
-{ TF_SubGrupo }
+{ TF_Grupo }
 
-procedure TF_SubGrupo.BitBtn1Click(Sender: TObject);
+procedure TF_Grupo.BitBtn1Click(Sender: TObject);
 var
   SQL: String;
 begin
-  SQL := 'select s.id_subgrupo, s.id_grupo, s.datacadastro, s.nome, s.status, g.nome as '
-    + QuotedStr('nomeGrupo') + ' ' + //
-    'from subgrupo s ' + //
-    'inner join grupo g ' + //
-    'on g.id_grupo = s.id_grupo ' + //
-    'where s.nome like ' + QuotedStr('%' + EdtPesquisar.Text + '%') + ';'; //
+  SQL := 'select * from grupo where nome like ' +
+  QuotedStr('%' + EdtPesquisar.Text + '%') + ';'; //
   //showmessage(SQL);
-  DM.FDQ_Subgrupo.Open(SQL);
+  DM.FDQ_Grupo.Open(SQL);
 
-  // DM.FDQ_Subgrupo.Locate('nome', VarArrayOf([Edit1.Text]), [loPartialKey]);
 end;
 
-procedure TF_SubGrupo.btn_cancelarClick(Sender: TObject);
+procedure TF_Grupo.btn_cancelarClick(Sender: TObject);
 begin
   inherited;
   doColors('asdadsasd');
-  DM.FDQ_Subgrupo.Cancel;
-  DM.FDQ_Subgrupo.Refresh;
+  DM.FDQ_Grupo.Cancel;
+  DM.FDQ_Grupo.Refresh;
   setCampos(false);
 end;
 
-procedure TF_SubGrupo.btn_editarClick(Sender: TObject);
+procedure TF_Grupo.btn_editarClick(Sender: TObject);
 begin
-  doInitButtons(DM.FDQ_Subgrupo.recordCount);
+  doInitButtons(DM.FDQ_Grupo.recordCount);
   if btn_editar.Enabled = true then
   begin
     inherited;
-    DM.FDQ_Subgrupo.Edit;
+    DM.FDQ_Grupo.Edit;
     setCampos(true);
   end;
 end;
 
-procedure TF_SubGrupo.btn_novoClick(Sender: TObject);
+procedure TF_Grupo.btn_novoClick(Sender: TObject);
 var
   hoje: TDate;
 begin
   inherited;
-  DM.FDQ_Subgrupo.Refresh;
-  DM.FDQ_Subgrupo.Insert;
+  DM.FDQ_Grupo.Refresh;
+  DM.FDQ_Grupo.Insert;
   hoje := Now;
   ed_datacadastro.Text := EmptyStr + FormatDateTime('DD/MM/YYYY', hoje);
   radio_status.ItemIndex := 0;
   setCampos(true);
 end;
 
-procedure TF_SubGrupo.btn_salvarClick(Sender: TObject);
+procedure TF_Grupo.btn_salvarClick(Sender: TObject);
 begin
   if (ed_nome.Text = '') then
   begin
     doColors(ed_nome.Name);
     showmessage('Campo nome não pode estar vazio!');
-  end
-  else if (combo_grupo.Text = '') then
-  begin
-    doColors(combo_grupo.Name);
-
-    showmessage('Campo grupo não pode estar vazio!');
   end
   else if (isDateValid(ed_datacadastro.Text) = false) then
   begin
@@ -134,39 +119,31 @@ begin
     doColors(radio_status.Name);
     showmessage('Status vazio!');
   end
-  else if (DM.FDQ_Subgrupo.Active = false) then
+  else if (DM.FDQ_Grupo.Active = false) then
   begin
-    doColors(ed_subgrupo.Name);
+    doColors(ed_grupo.Name);
     showmessage('Não conectado!');
   end
   else if (isDuplicated() = true) then
   begin
-    doColors(ed_subgrupo.Name);
+    doColors(ed_grupo.Name);
     showmessage('Cadastro duplicado!');
   end
   else
   begin
     doColors('asdasdasd');
-    DM.FDQ_Subgrupo.Post;
-    DM.FDQ_Subgrupo.Refresh;
+
+    DM.FDQ_Grupo.Post;
+    DM.FDQ_Grupo.Refresh;
     setCampos(false);
     inherited;
   end;
 
 end;
 
-procedure TF_SubGrupo.combo_grupoExit(Sender: TObject);
-begin
-  if combo_grupo.Text <> '' then
-  begin
-    shape_grupo.Brush.Color := clGreen;
-  end
-  else
-    shape_grupo.Brush.Color := clRed;
 
-end;
 
-procedure TF_SubGrupo.doColors(nome: String);
+procedure TF_Grupo.doColors(nome: String);
 var
   i: integer;
 begin
@@ -202,7 +179,7 @@ begin
 
 end;
 
-procedure TF_SubGrupo.doInitButtons(recordCount: integer);
+procedure TF_Grupo.doInitButtons(recordCount: integer);
 begin
   if recordCount > 0 then
   begin
@@ -210,7 +187,7 @@ begin
   end;
 end;
 
-procedure TF_SubGrupo.ed_datacadastroChange(Sender: TObject);
+procedure TF_Grupo.ed_datacadastroChange(Sender: TObject);
 begin
   if (isDateValid(ed_datacadastro.Text)) then
   begin
@@ -221,7 +198,7 @@ begin
 
 end;
 
-procedure TF_SubGrupo.ed_nomeChange(Sender: TObject);
+procedure TF_Grupo.ed_nomeChange(Sender: TObject);
 begin
   if ed_nome.Text <> '' then
   begin
@@ -231,9 +208,9 @@ begin
     shape_nome.Brush.Color := clRed;
 end;
 
-procedure TF_SubGrupo.ed_subgrupoChange(Sender: TObject);
+procedure TF_Grupo.ed_grupoChange(Sender: TObject);
 begin
-  if ed_subgrupo.Text <> '' then
+  if ed_grupo.Text <> '' then
   begin
     shape_id.Brush.Color := clGreen;
   end
@@ -241,16 +218,16 @@ begin
     shape_id.Brush.Color := clRed;
 end;
 
-procedure TF_SubGrupo.FormCreate(Sender: TObject);
+procedure TF_Grupo.FormCreate(Sender: TObject);
 begin
   btn_novo.Enabled := true;
   btn_editar.Enabled := false;
   btn_salvar.Enabled := false;
   btn_cancelar.Enabled := false;
-  doInitButtons(DM.FDQ_Subgrupo.recordCount);
+  doInitButtons(DM.FDQ_Grupo.recordCount);
 end;
 
-function TF_SubGrupo.isDateValid(Data: String): boolean;
+function TF_Grupo.isDateValid(Data: String): boolean;
 var
   resultado: boolean;
 begin
@@ -266,20 +243,20 @@ begin
   result := resultado;
 end;
 
-function TF_SubGrupo.isDuplicated: boolean;
+function TF_Grupo.isDuplicated: boolean;
 var
   resultado: boolean;
 begin
-  FDQ_Subgrupo_suporte.Refresh;
-  if FDQ_Subgrupo_suporte.Locate('nome;id_grupo',
-    VarArrayOf([ed_nome.Text, combo_grupo.KeyValue]), []) then
+ FDQ_grupo_suporte.Refresh;
+  if FDQ_grupo_suporte.Locate('nome',
+    VarArrayOf([ed_nome.Text]), []) then
     resultado := true
   else
     resultado := false;
   result := resultado;
 end;
 
-procedure TF_SubGrupo.radio_statusChange(Sender: TObject);
+procedure TF_Grupo.radio_statusChange(Sender: TObject);
 begin
   if radio_status.ItemIndex <> -1 then
   begin
@@ -290,10 +267,9 @@ begin
 
 end;
 
-procedure TF_SubGrupo.setCampos(estado: boolean);
+procedure TF_Grupo.setCampos(estado: boolean);
 begin
   ed_nome.Enabled := estado;
-  combo_grupo.Enabled := estado;
   radio_status.Enabled := estado;
   if estado = true then
     DBNavigator1.Enabled := false

@@ -70,7 +70,7 @@ begin
     sql := 'update cidade set ' + //
       ' id_cargo = ' + QuotedStr(Edit_IdCargo.Text) + //
       ' ,nome_cargo = ' + QuotedStr(Edit_NomeCargo.Text) + //
-      ' ,status = ' + QuotedStr(DBRadioCargo.Text);
+      ' ,status = ' + QuotedStr(DBRadioCargo.Value);
   end;
 
 end;

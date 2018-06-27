@@ -2459,6 +2459,9 @@ object F_Principal: TF_Principal
       object N1: TMenuItem
         Caption = '-'
       end
+      object Cargo1: TMenuItem
+        Caption = 'Cargo'
+      end
     end
     object EntradaeSaidas1: TMenuItem
       Caption = 'Entrada e Saidas'

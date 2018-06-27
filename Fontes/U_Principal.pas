@@ -47,6 +47,7 @@ type
     BTN_Estoque: TBitBtn;
     BTN_Produto: TBitBtn;
     Sair1: TMenuItem;
+    Cargo1: TMenuItem;
     procedure SubGrupo1Click(Sender: TObject);
     procedure ReFerenciaComercial1Click(Sender: TObject);
     procedure Cidade1Click(Sender: TObject);
@@ -64,7 +65,8 @@ implementation
 
 {$R *.dfm}
 
-uses U_modelo, U_Cidade, U_dm, U_Referenciacomercial, U_SubGrupo;
+uses U_modelo, U_Cidade, U_dm, U_Referenciacomercial, U_SubGrupo, U_Cargo,
+  U_Estado;
 
 procedure TF_Principal.Cidade1Click(Sender: TObject);
 begin

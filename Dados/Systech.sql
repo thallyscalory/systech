@@ -214,6 +214,49 @@ LOCK TABLES `cliente` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `compra`
+--
+
+DROP TABLE IF EXISTS `compra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `compra` (
+  `id_compra` int(11) NOT NULL AUTO_INCREMENT,
+  `id_fornecedor` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `datacadastro` int(11) NOT NULL,
+  `dataemissaonf` date NOT NULL,
+  `observacoes` varchar(45) NOT NULL,
+  `nf` varchar(45) NOT NULL,
+  `possuinf` char(1) NOT NULL,
+  `basecalcicms` double NOT NULL,
+  `totalicms_s_t` double NOT NULL,
+  `basecalcicms_s_t` double NOT NULL,
+  `totalprodutos` double NOT NULL,
+  `totalfrete` double NOT NULL,
+  `totalseguro` double NOT NULL,
+  `totaldesconto` double NOT NULL,
+  `outrasdespesas` double NOT NULL,
+  `TotalNF` double NOT NULL,
+  `totalipi` double NOT NULL,
+  `totalpis` double NOT NULL,
+  `totalcofins` double NOT NULL,
+  `valortotal` double NOT NULL,
+  `status` char(1) NOT NULL,
+  PRIMARY KEY (`id_compra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `compra`
+--
+
+LOCK TABLES `compra` WRITE;
+/*!40000 ALTER TABLE `compra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `compra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `estado`
 --
 
@@ -369,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-18 19:43:44
+-- Dump completed on 2018-06-26 21:36:14

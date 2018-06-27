@@ -4,7 +4,7 @@ USE `systech`;
 --
 -- Host: localhost    Database: systech
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.55-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -67,6 +67,41 @@ LOCK TABLES `banco` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `caixa`
+--
+
+DROP TABLE IF EXISTS `caixa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `caixa` (
+  `id_Caixa` int(11) NOT NULL AUTO_INCREMENT,
+  `id_Usuario` int(11) NOT NULL,
+  `id_ContaRec` int(11) NOT NULL,
+  `id_ContaPag` int(11) NOT NULL,
+  `id_Banco` int(11) NOT NULL,
+  `id_ContaCaixa` int(11) NOT NULL,
+  `id_FormaPagamento` int(11) NOT NULL,
+  `id_CentroCustoReceita` int(11) NOT NULL,
+  `datacadastro` date DEFAULT NULL,
+  `nome` varchar(25) DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `tipo` char(10) DEFAULT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_Caixa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `caixa`
+--
+
+LOCK TABLES `caixa` WRITE;
+/*!40000 ALTER TABLE `caixa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `caixa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cargo`
 --
 
@@ -116,6 +151,66 @@ CREATE TABLE `cidade` (
 LOCK TABLES `cidade` WRITE;
 /*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cliente` (
+  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_razaosocial` varchar(60) NOT NULL,
+  `tipopessoa` char(1) DEFAULT NULL,
+  `cpf_cnpj` varchar(15) NOT NULL,
+  `rg_ie` varchar(15) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) DEFAULT NULL,
+  `endereco` varchar(60) DEFAULT NULL,
+  `numero` varchar(10) DEFAULT NULL,
+  `bairro` varchar(30) DEFAULT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
+  `cep` char(8) DEFAULT NULL,
+  `id_cidade` int(11) DEFAULT NULL,
+  `pais` varchar(20) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `nomepai` varchar(45) DEFAULT NULL,
+  `nomemae` varchar(45) DEFAULT NULL,
+  `genero` char(2) DEFAULT NULL,
+  `estadocivil` char(5) DEFAULT NULL,
+  `grauescolaridade` varchar(20) DEFAULT NULL,
+  `localdetrabalho` varchar(45) DEFAULT NULL,
+  `id_cargo` int(11) DEFAULT NULL,
+  `renda` decimal(8,2) DEFAULT NULL,
+  `contatotrabalho` varchar(30) DEFAULT NULL,
+  `id_referencia` int(11) DEFAULT NULL,
+  `datadecadastro` date DEFAULT NULL,
+  `datanascimento` date DEFAULT NULL,
+  `status` char(2) DEFAULT NULL,
+  `observacao` text,
+  `autorizacoes` varchar(45) DEFAULT NULL,
+  `valormaxcred` decimal(8,2) DEFAULT NULL,
+  `naturalidade` varchar(45) DEFAULT NULL,
+  `nacionalidade` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_cliente`),
+  KEY `id_cidade_idx` (`id_cidade`),
+  KEY `id_cargo_idx` (`id_cargo`),
+  KEY `id_referencia_idx` (`id_referencia`),
+  CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_cidade` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_referencia` FOREIGN KEY (`id_referencia`) REFERENCES `referenciacomercial` (`id_referencia`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cliente`
+--
+
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,7 +269,7 @@ CREATE TABLE `funcionario` (
   `statusl` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_funcionario`),
   KEY `id_cidade_idx` (`id_cidade`),
-  CONSTRAINT `id_cidade` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_id_cidade` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -274,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-05 22:23:53
+-- Dump completed on 2018-06-18 19:43:44

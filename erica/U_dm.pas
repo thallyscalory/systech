@@ -36,12 +36,6 @@ type
     FDQ_SubgruponomeGrupo: TStringField;
     FDQ_Subgrupo_grupo: TFDQuery;
     DS_Subgrupo_grupo: TDataSource;
-    FDQ_Estado: TFDQuery;
-    FDQ_Estadoid_estado: TFDAutoIncField;
-    FDQ_Estadonome: TStringField;
-    FDQ_EstadoUF: TStringField;
-    FDQ_Estadostatus: TStringField;
-    DS_Estado: TDataSource;
   private
     { Private declarations }
   public

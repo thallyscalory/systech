@@ -170,42 +170,4 @@ object DM: TDM
     Left = 248
     Top = 184
   end
-  object FDQ_Estado: TFDQuery
-    Connection = FD_Conexao
-    SQL.Strings = (
-      'select * from estado')
-    Left = 368
-    Top = 40
-    object FDQ_Estadoid_estado: TFDAutoIncField
-      FieldName = 'id_estado'
-      Origin = 'id_estado'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQ_Estadonome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Required = True
-      Size = 25
-    end
-    object FDQ_EstadoUF: TStringField
-      FieldName = 'UF'
-      Origin = 'UF'
-      Required = True
-      FixedChar = True
-      Size = 2
-    end
-    object FDQ_Estadostatus: TStringField
-      FieldName = 'status'
-      Origin = '`status`'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object DS_Estado: TDataSource
-    DataSet = FDQ_Estado
-    Left = 296
-    Top = 24
-  end
 end

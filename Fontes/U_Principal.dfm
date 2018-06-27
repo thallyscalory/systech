@@ -2416,8 +2416,8 @@ object F_Principal: TF_Principal
     end
   end
   object MainMenu1: TMainMenu
-    Left = 656
-    Top = 40
+    Left = 648
+    Top = 8
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
       object Produto1: TMenuItem

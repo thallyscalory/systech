@@ -22,7 +22,6 @@ type
     IWDBLookupComboBox1: TIWDBLookupComboBox;
     Label6: TLabel;
     DBRadioGroup1: TDBRadioGroup;
-    Button1: TButton;
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_editarClick(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);

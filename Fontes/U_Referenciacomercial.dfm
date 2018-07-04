@@ -1,18 +1,26 @@
 inherited F_Referenciacomercial: TF_Referenciacomercial
-  Caption = 'Systech - Referencia Comercial'
+  Caption = 'Systech - Refer'#234'ncia Comercial'
+  Position = poDesktopCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
+    inherited btn_novo: TBitBtn
+      Width = 71
+      ExplicitWidth = 71
+    end
     inherited DBNavigator1: TDBNavigator
       Hints.Strings = ()
     end
   end
   inherited Consultar: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       inherited BitBtn1: TBitBtn
         OnClick = BitBtn1Click
+      end
+      inherited EdtPesquisar: TEdit
+        CharCase = ecUpperCase
+        OnExit = EdtPesquisarExit
       end
       inherited DBGrid1: TDBGrid
         DataSource = DS
@@ -70,8 +78,6 @@ inherited F_Referenciacomercial: TF_Referenciacomercial
       end
     end
     inherited TabSheet2: TTabSheet
-      ExplicitLeft = 124
-      ExplicitTop = 48
       object Label2: TLabel
         Left = 12
         Top = 16
@@ -134,7 +140,6 @@ inherited F_Referenciacomercial: TF_Referenciacomercial
         DataField = 'telefone'
         DataSource = DS_New
         Enabled = False
-        MaxLength = 14
         TabOrder = 2
       end
     end

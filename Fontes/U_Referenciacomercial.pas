@@ -24,13 +24,14 @@ type
     DS_New: TDataSource;
     Edt_Telefone: TDBEdit;
     procedure btn_novoClick(Sender: TObject);
-    procedure Edit1Exit(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btn_editarClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure EdtPesquisarExit(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure btn_sairClick(Sender: TObject);
   private
     procedure AtivaCampos;
     procedure DesativaCampos;
@@ -86,6 +87,15 @@ begin
   DM.FDQ_MaxRefCom.Open();
   max := DM.FDQ_MaxRefComMAXid_referencia.AsInteger + 1;
   Edt_ID.Text := IntToStr(max);
+  DM.FDQ_ReferenciaComercial.Close;
+  DM.FDQ_ReferenciaComercial.Open();
+  RG_Status.ItemIndex := 0;
+end;
+
+procedure TF_Referenciacomercial.btn_sairClick(Sender: TObject);
+begin
+  inherited;
+  LimpaCampos;
 end;
 
 procedure TF_Referenciacomercial.btn_salvarClick(Sender: TObject);
@@ -94,42 +104,52 @@ var
   status: string;
 begin
   inherited;
-  if (crud = 'Inserir') then
+  if (Edt_Empresa.Text <> '') then
   begin
-    if (RG_Status.ItemIndex = 0) then
-      status := 'A'
-    else
-      status := 'I';
+    if (crud = 'Inserir') then
+    begin
+      if (RG_Status.ItemIndex = 0) then
+        status := 'A'
+      else
+        status := 'I';
 
-    sql := 'insert into referenciacomercial(' + //
-      'empresaref, ' + //
-      'telefone, ' + //
-      'status' + //
-      ') values (' + //
-      QuotedStr(Edt_Empresa.Text) + ',' + //
-      QuotedStr(Edt_Telefone.Text) + ',' + //
-      QuotedStr(status) + ');';
+      sql := 'insert into referenciacomercial(' + //
+        'empresaref, ' + //
+        'telefone, ' + //
+        'status' + //
+        ') values (' + //
+        QuotedStr(Edt_Empresa.Text) + ',' + //
+        QuotedStr(Edt_Telefone.Text) + ',' + //
+        QuotedStr(status) + ');';
+    end
+    else if (crud = 'Editar') then
+    begin
+      if (RG_Status.ItemIndex = 0) then
+        status := 'A'
+      else
+        status := 'I';
+
+      sql := 'update referenciacomercial set ' + //
+        'empresaref = ' + QuotedStr(Edt_Empresa.Text) + //
+        ', telefone = ' + QuotedStr(Edt_Telefone.Text) + //
+        ', status = ' + QuotedStr(status) + //
+        'where id_referencia = ' + Edt_ID.Text;
+    end;
+    DM.FD_Conexao.ExecSQL(sql);
+    DM.FD_Conexao.CommitRetaining;
+
+    LimpaCampos;
+    DesativaCampos;
+
+    crud := EmptyStr;
   end
-  else if (crud = 'Editar') then
+  else
   begin
-    if (RG_Status.ItemIndex = 0) then
-      status := 'A'
-    else
-      status := 'I';
-
-    sql := 'update referenciacomercial set ' + //
-      'empresaref = ' + QuotedStr(Edt_Empresa.Text) + //
-      ', telefone = ' + QuotedStr(Edt_Telefone.Text) + //
-      ', status = ' + QuotedStr(status) + //
-      'where id_referencia = ' + Edt_ID.Text;
+    ShowMessage
+      ('O campo Empresa Referência está em branco. Por favor informe o nome da Empresa');
+    TabSheet2.Show;
+    Edt_Empresa.SetFocus;
   end;
-  DM.FD_Conexao.ExecSQL(sql);
-  DM.FD_Conexao.CommitRetaining;
-
-  LimpaCampos;
-  DesativaCampos;
-
-  crud := EmptyStr;
 end;
 
 procedure TF_Referenciacomercial.DBGrid1DblClick(Sender: TObject);
@@ -145,16 +165,16 @@ begin
 
   Consultar.TabIndex := 1;
 
-  btn_editar.Enabled := true;
-  btn_cancelar.Enabled := true;
+  btn_editar.Enabled := True;
+  btn_cancelar.Enabled := True;
   DesativaCampos;
 end;
 
 procedure TF_Referenciacomercial.AtivaCampos;
 begin
-  Edt_Empresa.Enabled := true;
-  Edt_Telefone.Enabled := true;
-  RG_Status.Enabled := true;
+  Edt_Empresa.Enabled := True;
+  Edt_Telefone.Enabled := True;
+  RG_Status.Enabled := True;
 end;
 
 procedure TF_Referenciacomercial.DesativaCampos;
@@ -162,6 +182,14 @@ begin
   Edt_Empresa.Enabled := false;
   Edt_Telefone.Enabled := false;
   RG_Status.Enabled := false;
+end;
+
+procedure TF_Referenciacomercial.EdtPesquisarExit(Sender: TObject);
+begin
+  inherited;
+  DM.FDQ_RC.Close;
+  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := EdtPesquisar.Text + '%';
+  DM.FDQ_RC.Open();
 end;
 
 procedure TF_Referenciacomercial.LimpaCampos;
@@ -172,18 +200,15 @@ begin
   RG_Status.ItemIndex := -1;
 end;
 
-procedure TF_Referenciacomercial.Edit1Exit(Sender: TObject);
-begin
-  inherited;
-  DM.FDQ_RC.Close;
-  DM.FDQ_RC.ParamByName('RefEmpresa').AsString := EdtPesquisar.Text + '%';
-  DM.FDQ_RC.Open();
-end;
-
 procedure TF_Referenciacomercial.FormShow(Sender: TObject);
 begin
   inherited;
   Consultar.TabIndex := 0;
+  btn_novo.Enabled := True;
+  btn_editar.Enabled := false;
+  btn_salvar.Enabled := false;
+  btn_cancelar.Enabled := false;
+  btn_sair.Enabled := True;
 end;
 
 end.

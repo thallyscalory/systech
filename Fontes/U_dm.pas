@@ -17,10 +17,6 @@ type
     FDQ_MaxRefCom: TFDQuery;
     FDQ_MaxRefComMAXid_referencia: TIntegerField;
     FDQ_ReferenciaComercial: TFDQuery;
-    FDQ_ReferenciaComercialid_referencia: TFDAutoIncField;
-    FDQ_ReferenciaComercialempresaref: TStringField;
-    FDQ_ReferenciaComercialtelefone: TStringField;
-    FDQ_ReferenciaComercialstatus: TStringField;
     FDQ_RCid_referencia: TFDAutoIncField;
     FDQ_RCempresaref: TStringField;
     FDQ_RCtelefone: TStringField;
@@ -40,6 +36,10 @@ type
     FDQ_Grupodata_cadastro: TDateField;
     FDQ_Gruponome: TStringField;
     FDQ_Grupostatus: TStringField;
+    FDQ_ReferenciaComercialid_referencia: TFDAutoIncField;
+    FDQ_ReferenciaComercialempresaref: TStringField;
+    FDQ_ReferenciaComercialtelefone: TStringField;
+    FDQ_ReferenciaComercialstatus: TStringField;
   private
     { Private declarations }
   public

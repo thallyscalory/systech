@@ -6,9 +6,10 @@ object DM: TDM
     Params.Strings = (
       'Database=Systech'
       'User_Name=root'
-      'Password=root'
+      'Password=enju'
       'Server=127.0.0.1'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 24
     Top = 16
@@ -74,7 +75,6 @@ object DM: TDM
       FieldName = 'id_referencia'
       Origin = 'id_referencia'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object FDQ_ReferenciaComercialempresaref: TStringField
       FieldName = 'empresaref'

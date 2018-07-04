@@ -3,7 +3,7 @@ object F_Principal: TF_Principal
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Systech - P'#225'gina Inicial'
-  ClientHeight = 539
+  ClientHeight = 519
   ClientWidth = 697
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -2440,6 +2440,7 @@ object F_Principal: TF_Principal
       end
       object Cliente1: TMenuItem
         Caption = 'Cliente'
+        OnClick = Cliente1Click
       end
       object Fornecedor1: TMenuItem
         Caption = 'Fornecedor'

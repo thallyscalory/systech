@@ -172,7 +172,7 @@ CREATE TABLE `cliente` (
   `numero` varchar(10) DEFAULT NULL,
   `bairro` varchar(30) DEFAULT NULL,
   `complemento` varchar(45) DEFAULT NULL,
-  `cep` char(8) DEFAULT NULL,
+  `cep` char(9) DEFAULT NULL,
   `id_cidade` int(11) DEFAULT NULL,
   `pais` varchar(20) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -360,7 +360,7 @@ DROP TABLE IF EXISTS `referenciacomercial`;
 CREATE TABLE `referenciacomercial` (
   `id_referencia` int(11) NOT NULL AUTO_INCREMENT,
   `empresaref` varchar(20) NOT NULL,
-  `telefone` varchar(11) DEFAULT NULL,
+  `telefone` varchar(14) DEFAULT NULL,
   `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_referencia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

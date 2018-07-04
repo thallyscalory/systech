@@ -161,7 +161,6 @@ type
     RG_Genero: TRadioGroup;
     Edt_NomePai: TEdit;
     Label19: TLabel;
-    Edt_DataNascimento: TEdit;
     Label28: TLabel;
     Label21: TLabel;
     Label22: TLabel;
@@ -179,6 +178,10 @@ type
     CB_Escolaridade: TComboBox;
     LinkListControlToField2: TLinkListControlToField;
     LinkListControlToField3: TLinkListControlToField;
+    Edt_DataNascimento: TDBEdit;
+    Btn_Cidade: TBitBtn;
+    Btn_Cargo: TBitBtn;
+    Btn_Referencia: TBitBtn;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure Edt_DataNascimentoEnter(Sender: TObject);
@@ -198,6 +201,10 @@ type
     procedure Edt_ValorMaxCredEnter(Sender: TObject);
     procedure CB_ReferenciaJEnter(Sender: TObject);
     procedure RG_TipoPessoaClick(Sender: TObject);
+    procedure Btn_CidadeClick(Sender: TObject);
+    procedure Btn_CargoClick(Sender: TObject);
+    procedure Btn_ReferenciaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure AtivaCampos;
     procedure DesativaCampos;
@@ -216,7 +223,7 @@ implementation
 
 {$R *.dfm}
 
-uses U_dm;
+uses U_dm, U_Cidade, U_Cargo, U_Referenciacomercial;
 
 procedure TF_Cliente.BitBtn1Click(Sender: TObject);
 begin
@@ -231,6 +238,18 @@ begin
   inherited;
   LimpaCampos;
   DesativaCampos;
+end;
+
+procedure TF_Cliente.Btn_CargoClick(Sender: TObject);
+begin
+  inherited;
+  F_Cargo.ShowModal;
+end;
+
+procedure TF_Cliente.Btn_CidadeClick(Sender: TObject);
+begin
+  inherited;
+  F_Cidade.ShowModal;
 end;
 
 procedure TF_Cliente.btn_editarClick(Sender: TObject);
@@ -253,7 +272,7 @@ begin
   AtivaCampos;
   LimpaCampos;
   Edt_RazaoSocial.SetFocus;
-  Edt_DataCadastro.Text := FormatDateTime('yyyy-mm-dd', Date());
+  Edt_DataCadastro.Text := FormatDateTime('dd/mm/yyyy', Date());
   FDQ_ClienteMax.Close;
   FDQ_ClienteMax.Open();
   max := FDQ_ClienteMaxmaxid_cliente.AsInteger + 1;
@@ -264,7 +283,6 @@ begin
   FDQCliente.Close;
   FDQCliente.Open();
   FDQClientecpf_cnpj.EditMask := '000.000.000-00;1;_';
-  Edt_DataNascimento.Text := 'aaaa/mm/dd';
   CB_Cidade.Text := 'Escolha uma Cidade';
   CB_Referencia.Text := 'Escolha uma Referência';
   CB_Cargo.Text := 'Escolha um Cargo';
@@ -272,10 +290,17 @@ begin
   CB_Escolaridade.Text := 'Escolha um Grau de Escolaridade';
 end;
 
+procedure TF_Cliente.Btn_ReferenciaClick(Sender: TObject);
+begin
+  inherited;
+  F_Referenciacomercial.ShowModal;
+end;
+
 procedure TF_Cliente.btn_sairClick(Sender: TObject);
 begin
   inherited;
   LimpaCampos;
+  DesativaCampos;
 end;
 
 procedure TF_Cliente.btn_salvarClick(Sender: TObject);
@@ -284,24 +309,16 @@ var
   status: string;
   tipoPessoa: string;
   genero: string;
-  dataCadastro, dataNascimento: string;
-  tmp: string;
+  tmpDate, dataCadastro, tmpDN, dataNascimento: string;
 begin
   inherited;
-  dataCadastro := StringReplace(Edt_DataCadastro.Text, '-', '', [rfReplaceAll]);
-  dataNascimento := StringReplace(Edt_DataNascimento.Text, '/', '',
-    [rfReplaceAll]);
-  if crud = 'Alterar' then
-  begin
-    tmp := StringReplace(FDQ_Cdatanascimento.AsString, '/', '', [rfReplaceAll]);
-    // if ((copy(dataNascimento, 1, 4)) = (copy(tmp, 5, 4))) and
-    // ((copy(dataNascimento, 5, 2)) = (copy(tmp, 3, 2))) and
-    // ((copy(dataNascimento, 7, 2)) = (copy(tmp, 1, 2))) then
-    ShowMessage(dataNascimento + ' - ' + tmp);
-  end;
+  tmpDate := StringReplace(Edt_DataCadastro.Text, '/', '', [rfReplaceAll]);
+  tmpDN := StringReplace(Edt_DataNascimento.Text, '/', '', [rfReplaceAll]);
+  dataCadastro := (copy(tmpDate, 5, 4) + copy(tmpDate, 3, 2) +
+    copy(tmpDate, 1, 2));
+  dataNascimento := (copy(tmpDN, 5, 4) + copy(tmpDN, 3, 2) + copy(tmpDN, 1, 2));
 
-  if (dataNascimento >= dataCadastro) or (dataNascimento = '') or
-    (dataNascimento = 'aaaammdd') then
+  if dataNascimento >= dataCadastro then
   begin
     ShowMessage('Data de Nascimento incorreta!!!');
     Consultar.TabIndex := 1;
@@ -470,7 +487,7 @@ begin
       ',bairro = ' + QuotedStr(Edt_Bairro.Text) + //
       ',complemento = ' + QuotedStr(Edt_Complemento.Text) + //
       ',cep = ' + QuotedStr(Edt_CEP.Text) + //
-      ',id_cidade = ' + FDQCidadeid_cidade.AsString + //
+      ',id_cidade = ' + FDQCidadeEditid_cidade.AsString + //
       ',pais = ' + QuotedStr(Edt_Pais.Text) + //
       ',email = ' + QuotedStr(Edt_Email.Text) + //
       ',nomepai = ' + QuotedStr(Edt_NomePai.Text) + //
@@ -483,7 +500,6 @@ begin
       ',renda = ' + Edt_Renda.Text + //
       ',contatotrabalho = ' + QuotedStr(Edt_ContatoTrabalho.Text) + //
       ',id_referencia = ' + FDQReferenciaid_referencia.AsString + //
-      ',datadecadastro = ' + 'date(' + dataCadastro + ')' + //
       ',datanascimento = ' + 'date(' + dataNascimento + ')' + //
       ',status = ' + QuotedStr(status) + //
       ',observacao = ' + QuotedStr(Mm_Obs.Text) + //
@@ -615,6 +631,7 @@ begin
   Edt_Telefone.Text := FDQ_Ctelefone.AsString;
   Edt_Celular.Text := FDQ_Ccelular.AsString;
   Edt_Pais.Text := FDQ_Cpais.AsString;
+  Edt_CEP.Text := FDQ_Ccep.AsString;
   CB_Cidade.Text := FDQCidadeEditnome.AsString;
   Edt_UF.Text := FDQCidadeEdituf.AsString;
   Mm_Obs.Text := FDQ_Cobservacao.AsString;
@@ -654,6 +671,13 @@ procedure TF_Cliente.Edt_ValorMaxCredEnter(Sender: TObject);
 begin
   inherited;
   Edt_ValorMaxCred.Text := EmptyStr;
+end;
+
+procedure TF_Cliente.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  LimpaCampos;
+  DesativaCampos;
 end;
 
 procedure TF_Cliente.FormShow(Sender: TObject);

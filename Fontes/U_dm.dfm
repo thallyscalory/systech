@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
-  Height = 312
-  Width = 518
+  Height = 473
+  Width = 670
   object FD_Conexao: TFDConnection
     Params.Strings = (
       'Database=Systech'

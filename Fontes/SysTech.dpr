@@ -10,7 +10,8 @@ uses
   U_Estado in 'U_Estado.pas' {F_Estado},
   U_modelo in 'U_modelo.pas' {F_modelo},
   U_Grupo in 'U_Grupo.pas' {F_Grupo},
-  U_SubGrupo in 'U_SubGrupo.pas' {F_SubGrupo};
+  U_SubGrupo in 'U_SubGrupo.pas' {F_SubGrupo},
+  U_Cliente in 'U_Cliente.pas' {F_Cliente};
 
 {$R *.res}
 
@@ -27,6 +28,7 @@ begin
   Application.CreateForm(TF_modelo, F_modelo);
   Application.CreateForm(TF_Grupo, F_Grupo);
   Application.CreateForm(TF_SubGrupo, F_SubGrupo);
+  Application.CreateForm(TF_Cliente, F_Cliente);
   Application.Run;
 
 end.

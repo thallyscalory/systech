@@ -74,21 +74,21 @@ DROP TABLE IF EXISTS `caixa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `caixa` (
-  `id_Caixa` int(11) NOT NULL AUTO_INCREMENT,
-  `id_Usuario` int(11) NOT NULL,
-  `id_ContaRec` int(11) NOT NULL,
+  `id_caixa` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_contarec` int(11) NOT NULL,
   `id_ContaPag` int(11) NOT NULL,
-  `id_Banco` int(11) NOT NULL,
-  `id_ContaCaixa` int(11) NOT NULL,
+  `id_banco` int(11) NOT NULL,
+  `id_contacaixa` int(11) NOT NULL,
   `id_FormaPagamento` int(11) NOT NULL,
-  `id_CentroCustoReceita` int(11) NOT NULL,
+  `id_centrocustoreceita` int(11) NOT NULL,
   `datacadastro` date DEFAULT NULL,
   `nome` varchar(25) DEFAULT NULL,
   `valor` float DEFAULT NULL,
   `tipo` char(10) DEFAULT NULL,
   `descricao` varchar(45) DEFAULT NULL,
   `observacao` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_Caixa`)
+  PRIMARY KEY (`id_caixa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -123,6 +123,49 @@ CREATE TABLE `cargo` (
 LOCK TABLES `cargo` WRITE;
 /*!40000 ALTER TABLE `cargo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cargo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cheque`
+--
+
+DROP TABLE IF EXISTS `cheque`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cheque` (
+  `id_cheque` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_banco` int(11) DEFAULT NULL,
+  `data_cadastro` date DEFAULT NULL,
+  `data_cheque` date DEFAULT NULL,
+  `titular_do_cheque` varchar(45) DEFAULT NULL,
+  `numero_do_cheque` float DEFAULT NULL,
+  `agenda` float DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `data_vencimento` date DEFAULT NULL,
+  `data_compensacao` date DEFAULT NULL,
+  `cheque_repassado` varchar(45) DEFAULT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  PRIMARY KEY (`id_cheque`),
+  KEY `id_usuario_idx` (`id_usuario`),
+  KEY `id_cliente_idx` (`id_cliente`),
+  KEY `id_banco_idx` (`id_banco`),
+  CONSTRAINT `id_usuario_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_cliente_3` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_banco_1` FOREIGN KEY (`id_banco`) REFERENCES `banco` (`id_banco`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cheque`
+--
+
+LOCK TABLES `cheque` WRITE;
+/*!40000 ALTER TABLE `cheque` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cheque` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -261,6 +304,97 @@ LOCK TABLES `compra` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `contasapagar`
+--
+
+DROP TABLE IF EXISTS `contasapagar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contasapagar` (
+  `id_contasapagar` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_compra` int(11) DEFAULT NULL,
+  `id_fornecedor` int(11) DEFAULT NULL,
+  `id_formadepagamento` int(11) DEFAULT NULL,
+  `id_grupocentrocustoreceita` int(11) DEFAULT NULL,
+  `data_cadastro` date DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `valor_desconto` float DEFAULT NULL,
+  `valor_multa` float DEFAULT NULL,
+  `valor_juros` float DEFAULT NULL,
+  `valor_total` float DEFAULT NULL,
+  `data_lancamento` date DEFAULT NULL,
+  `data_vencimento` date DEFAULT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_contasapagar`),
+  KEY `id_usuario_idx` (`id_usuario`),
+  KEY `id_compra_idx` (`id_compra`),
+  KEY `id_fornecedor_idx` (`id_fornecedor`),
+  KEY `id_formadepagamento_idx` (`id_formadepagamento`),
+  CONSTRAINT `id_usuario_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_compra_4` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_fornecedor_2` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_formadepagamento_2` FOREIGN KEY (`id_formadepagamento`) REFERENCES `formadepagamento` (`id_formadepagamento`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contasapagar`
+--
+
+LOCK TABLES `contasapagar` WRITE;
+/*!40000 ALTER TABLE `contasapagar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contasapagar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contasareceber`
+--
+
+DROP TABLE IF EXISTS `contasareceber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contasareceber` (
+  `id_contasareceber` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_venda` int(11) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_formapagamento` int(11) DEFAULT NULL,
+  `id_grupocentrocustoreceita` int(11) DEFAULT NULL,
+  `data_cadastro` date NOT NULL,
+  `valor` float NOT NULL,
+  `valor_desconto` float DEFAULT NULL,
+  `valor_multa` float DEFAULT NULL,
+  `valor_juros` float DEFAULT NULL,
+  `valor_total` float NOT NULL,
+  `data_lancamento` date NOT NULL,
+  `data_vencimento` date NOT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  `status` char(1) NOT NULL,
+  PRIMARY KEY (`id_contasareceber`),
+  KEY `id_usuario_idx` (`id_usuario`),
+  KEY `id_venda_idx` (`id_venda`),
+  KEY `id_cliente_idx` (`id_cliente`),
+  KEY `id_formadepagamento_idx` (`id_formapagamento`),
+  CONSTRAINT `id_formadepagamento` FOREIGN KEY (`id_formapagamento`) REFERENCES `formadepagamento` (`id_formadepagamento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_cliente_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_usuario_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_venda_1` FOREIGN KEY (`id_venda`) REFERENCES `venda` (`id_venda`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contasareceber`
+--
+
+LOCK TABLES `contasareceber` WRITE;
+/*!40000 ALTER TABLE `contasareceber` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contasareceber` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `estado`
 --
 
@@ -283,6 +417,30 @@ CREATE TABLE `estado` (
 LOCK TABLES `estado` WRITE;
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `formadepagamento`
+--
+
+DROP TABLE IF EXISTS `formadepagamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `formadepagamento` (
+  `id_formadepagamento` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  PRIMARY KEY (`id_formadepagamento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `formadepagamento`
+--
+
+LOCK TABLES `formadepagamento` WRITE;
+/*!40000 ALTER TABLE `formadepagamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `formadepagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -376,6 +534,40 @@ LOCK TABLES `funcionario` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gerarrecibo`
+--
+
+DROP TABLE IF EXISTS `gerarrecibo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gerarrecibo` (
+  `id_recibo` int(11) NOT NULL AUTO_INCREMENT,
+  `id_caixa` int(11) DEFAULT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `logradouro` varchar(45) DEFAULT NULL,
+  `cpf_cnpj` int(11) DEFAULT NULL,
+  `rg_ie` int(11) DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_recibo`),
+  KEY `id_caixa_idx` (`id_caixa`),
+  CONSTRAINT `id_caixa_1` FOREIGN KEY (`id_caixa`) REFERENCES `caixa` (`id_caixa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gerarrecibo`
+--
+
+LOCK TABLES `gerarrecibo` WRITE;
+/*!40000 ALTER TABLE `gerarrecibo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gerarrecibo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `grupo`
 --
 
@@ -428,8 +620,8 @@ CREATE TABLE `itemcompra` (
   PRIMARY KEY (`id_itemcompra`),
   KEY `id_compra_idx` (`id_compra`),
   KEY `id_produto_idx` (`id_produto`),
-  CONSTRAINT `id_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_compra` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `id_compra` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -682,4 +874,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-26 22:33:37
+-- Dump completed on 2018-08-15 21:59:34

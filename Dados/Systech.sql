@@ -55,9 +55,9 @@ DROP TABLE IF EXISTS `agencia`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agencia` (
   `id_agencia` int(11) NOT NULL AUTO_INCREMENT,
-  `id_banco` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL,
-  `status` char(1) NOT NULL,
+  `id_banco` int(11) DEFAULT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_agencia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -80,8 +80,8 @@ DROP TABLE IF EXISTS `banco`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `banco` (
   `id_banco` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(30) NOT NULL,
-  `status` char(1) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_banco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -210,21 +210,21 @@ DROP TABLE IF EXISTS `cheque`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cheque` (
   `id_cheque` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(11) DEFAULT NULL,
-  `id_cliente` int(11) DEFAULT NULL,
-  `id_banco` int(11) DEFAULT NULL,
-  `data_cadastro` date DEFAULT NULL,
-  `data_cheque` date DEFAULT NULL,
-  `titular_do_cheque` varchar(45) DEFAULT NULL,
-  `numero_do_cheque` float DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_banco` int(11) NOT NULL,
+  `data_cadastro` date NOT NULL,
+  `data_cheque` date NOT NULL,
+  `titular_do_cheque` varchar(45) NOT NULL,
+  `numero_do_cheque` float NOT NULL,
   `agenda` float DEFAULT NULL,
-  `valor` float DEFAULT NULL,
-  `data_vencimento` date DEFAULT NULL,
+  `valor` float NOT NULL,
+  `data_vencimento` date NOT NULL,
   `data_compensacao` date DEFAULT NULL,
   `cheque_repassado` varchar(45) DEFAULT NULL,
   `descricao` varchar(45) DEFAULT NULL,
   `observacao` varchar(45) DEFAULT NULL,
-  `status` char(1) DEFAULT NULL,
+  `status` char(1) NOT NULL,
   PRIMARY KEY (`id_cheque`),
   KEY `id_usuario_idx` (`id_usuario`),
   KEY `id_cliente_idx` (`id_cliente`),
@@ -255,7 +255,7 @@ CREATE TABLE `cidade` (
   `id_cidade` int(11) NOT NULL,
   `nome` varchar(30) NOT NULL,
   `id_estado` int(11) NOT NULL,
-  `ibge` int(11) NOT NULL,
+  `ibge` int(11) DEFAULT NULL,
   `status` char(1) NOT NULL,
   PRIMARY KEY (`id_cidade`),
   KEY `id_estado_idx` (`id_estado`),
@@ -824,26 +824,26 @@ DROP TABLE IF EXISTS `produto`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produto` (
   `id_produto` int(11) NOT NULL AUTO_INCREMENT,
-  `id_marca` int(11) NOT NULL,
-  `id_subgrupo` int(11) NOT NULL,
+  `id_marca` int(11) DEFAULT NULL,
+  `id_subgrupo` int(11) DEFAULT NULL,
   `datacadastro` date NOT NULL,
-  `codigodebarras` varchar(100) NOT NULL,
+  `codigodebarras` varchar(100) DEFAULT NULL,
   `nome` varchar(45) NOT NULL,
-  `nomecomum` varchar(45) NOT NULL,
-  `peso` varchar(45) NOT NULL,
-  `medidas` varchar(45) NOT NULL,
-  `unidade` varchar(45) NOT NULL,
+  `nomecomum` varchar(45) DEFAULT NULL,
+  `peso` varchar(45) DEFAULT NULL,
+  `medidas` varchar(45) DEFAULT NULL,
+  `unidade` varchar(45) DEFAULT NULL,
   `modelo` varchar(45) DEFAULT NULL,
   `numfabricante` varchar(45) DEFAULT NULL,
-  `estoqueatual` int(11) NOT NULL,
-  `estoqueminimo` int(11) NOT NULL,
+  `estoqueatual` int(11) DEFAULT NULL,
+  `estoqueminimo` int(11) DEFAULT NULL,
   `ultimocusto` float DEFAULT NULL,
   `valorvenda` float NOT NULL,
   `margemlucro` float NOT NULL,
   `descontomax` float NOT NULL,
-  `origem` int(11) NOT NULL,
-  `observacao` varchar(45) NOT NULL,
-  `imagem` blob NOT NULL,
+  `origem` int(11) DEFAULT NULL,
+  `observacao` varchar(45) DEFAULT NULL,
+  `imagem` blob,
   `status` char(1) NOT NULL,
   PRIMARY KEY (`id_produto`),
   KEY `id_subgrupo_idx` (`id_subgrupo`),
@@ -998,4 +998,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-17 20:01:33
+-- Dump completed on 2018-08-17 20:12:11

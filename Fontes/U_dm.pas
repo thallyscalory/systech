@@ -40,6 +40,7 @@ type
     FDQ_Grupodata_cadastro: TDateField;
     FDQ_Gruponome: TStringField;
     FDQ_Grupostatus: TStringField;
+    FDQ_formapagamento: TFDQuery;
   private
     { Private declarations }
   public

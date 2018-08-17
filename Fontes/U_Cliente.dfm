@@ -241,7 +241,9 @@ inherited F_Cliente: TF_Cliente
     inherited TabSheet2: TTabSheet
       Enabled = False
       ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 884
+      ExplicitHeight = 414
       object Label2: TLabel
         Left = 3
         Top = 1

@@ -3,7 +3,7 @@ object F_Principal: TF_Principal
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Systech - P'#225'gina Inicial'
-  ClientHeight = 539
+  ClientHeight = 519
   ClientWidth = 697
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -1286,6 +1286,8 @@ object F_Principal: TF_Principal
     Height = 117
     Align = alTop
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 124
     object BTN_Caixa: TBitBtn
       Left = 3
       Top = 8
@@ -1960,6 +1962,7 @@ object F_Principal: TF_Principal
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 5
+      OnClick = BTN_CReceberClick
     end
     object BTN_Fornecedor: TBitBtn
       Left = 387

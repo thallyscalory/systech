@@ -177,14 +177,10 @@ object F_Estado: TF_Estado
     Top = 63
     Width = 889
     Height = 442
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Consultar'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label1: TLabel
         Left = 7
         Top = 29

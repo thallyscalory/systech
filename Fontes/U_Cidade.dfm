@@ -1,5 +1,7 @@
 inherited F_Cidade: TF_Cidade
   Caption = 'Systech - Cidade'
+  ExplicitWidth = 908
+  ExplicitHeight = 544
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -8,7 +10,6 @@ inherited F_Cidade: TF_Cidade
     end
   end
   inherited Consultar: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24

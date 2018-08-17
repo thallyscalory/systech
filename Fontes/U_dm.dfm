@@ -195,4 +195,11 @@ object DM: TDM
       Size = 1
     end
   end
+  object FDQ_formapagamento: TFDQuery
+    Connection = FD_Conexao
+    SQL.Strings = (
+      'select * from formadepagamento;')
+    Left = 464
+    Top = 40
+  end
 end

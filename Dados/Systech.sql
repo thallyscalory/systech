@@ -82,6 +82,7 @@ CREATE TABLE `banco` (
   `id_banco` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(30) DEFAULT NULL,
   `status` char(1) DEFAULT NULL,
+  `num_banco` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_banco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -998,4 +999,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-17 20:12:11
+-- Dump completed on 2018-08-17 20:24:42

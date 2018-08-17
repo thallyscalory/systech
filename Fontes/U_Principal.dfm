@@ -1511,6 +1511,7 @@ object F_Principal: TF_Principal
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 1
+      OnClick = BTN_ClienteClick
     end
     object BTN_Colaborador: TBitBtn
       Left = 527
@@ -2440,6 +2441,7 @@ object F_Principal: TF_Principal
       end
       object Cliente1: TMenuItem
         Caption = 'Cliente'
+        OnClick = Cliente1Click
       end
       object Fornecedor1: TMenuItem
         Caption = 'Fornecedor'

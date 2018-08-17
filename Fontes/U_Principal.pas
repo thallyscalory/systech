@@ -55,6 +55,8 @@ type
     procedure Cargo1Click(Sender: TObject);
     procedure Grupo1Click(Sender: TObject);
     procedure Estado1Click(Sender: TObject);
+    procedure BTN_ClienteClick(Sender: TObject);
+    procedure Cliente1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,7 +71,12 @@ implementation
 {$R *.dfm}
 
 uses U_modelo, U_Cidade, U_dm, U_Referenciacomercial, U_SubGrupo, U_Cargo,
-  U_Estado, U_Grupo;
+  U_Estado, U_Grupo, U_Cliente;
+
+procedure TF_Principal.BTN_ClienteClick(Sender: TObject);
+begin
+ F_Cliente.ShowModal;
+end;
 
 procedure TF_Principal.Cargo1Click(Sender: TObject);
 begin
@@ -79,6 +86,11 @@ end;
 procedure TF_Principal.Cidade1Click(Sender: TObject);
 begin
   F_Cidade.ShowModal;
+end;
+
+procedure TF_Principal.Cliente1Click(Sender: TObject);
+begin
+F_Cliente.ShowModal;
 end;
 
 procedure TF_Principal.Estado1Click(Sender: TObject);

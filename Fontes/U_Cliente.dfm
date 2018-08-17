@@ -3,8 +3,6 @@ inherited F_Cliente: TF_Cliente
   Position = poDesktopCenter
   OnClose = FormClose
   OnShow = FormShow
-  ExplicitWidth = 908
-  ExplicitHeight = 544
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -241,7 +239,9 @@ inherited F_Cliente: TF_Cliente
     inherited TabSheet2: TTabSheet
       Enabled = False
       ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 884
+      ExplicitHeight = 414
       object Label2: TLabel
         Left = 3
         Top = 1
@@ -843,7 +843,7 @@ inherited F_Cliente: TF_Cliente
       'inner join estado e'
       '  on e.id_estado = c.id_estado'
       'order by 1 asc;')
-    Left = 604
+    Left = 620
     Top = 7
     object FDQCidadenome: TStringField
       FieldName = 'nome'
@@ -935,7 +935,6 @@ inherited F_Cliente: TF_Cliente
         Name = 'ID_CARGO'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '%'
       end>
     object FDQCargoid_cargo: TFDAutoIncField
       FieldName = 'id_cargo'
@@ -977,7 +976,6 @@ inherited F_Cliente: TF_Cliente
         Name = 'ID_REFERENCIA'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '%'
       end>
     object FDQReferenciaid_referencia: TFDAutoIncField
       FieldName = 'id_referencia'
@@ -1244,7 +1242,6 @@ inherited F_Cliente: TF_Cliente
         Name = 'NOMECLIENTE'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '%'
       end>
     object FDQ_Cid_cliente: TFDAutoIncField
       FieldName = 'id_cliente'
